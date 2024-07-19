@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs");
-const { hideBin } = require("yargs/helpers")
 
-yargs(hideBin(process.argv))
-    .command("flags", "Get the flags", (yArgs) => {
-        return yArgs
-    }, (argv) => {
-        
-    })
+yargs.command({
+    command: "flags",
+    describe: "Get all flag values",
+    builder: (yargs) => {
+        return yargs
+    },
+    handler: (argv) => {
+        console.log("Good morning")
+    }
+}).demandCommand(1).help().argv
