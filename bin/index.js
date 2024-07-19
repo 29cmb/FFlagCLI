@@ -31,5 +31,32 @@ yargs.command({
             console.log("An error occured")
         })
     }
+}).command({
+    command: "create",
+    describe: "Create a new flag",
+    builder: (yargs) => { 
+        return yargs.positional("name", {
+            describe: "Name of the flag",
+            type: "string",
+        })
+        .positional("value", {
+            describe: "Value of the flag",
+            type: "string",
+            demandOption: true,
+        })
+    },
+    handler: async (argv) => {
+        if(argv._.length !== 3) return console.log("You did not provide the valid amount of arguments")
+        if(argv._[2] == "true") argv._[2] = true
+        if(argv._[2] == "false") argv._[2] = false
+        await axios.post(`${baseAPIURL}/api/create`, {
+            flag: argv._[1],
+            value: argv._[2]
+        }).then(response => {
+            console.log(response.data.message)
+        }).catch(err => {
+            console.log("An error occured")
+        })
+    }
 })
 .demandCommand(1).help().argv
