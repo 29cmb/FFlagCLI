@@ -35,3 +35,6 @@ Contributions are always welcome! If you find a bug, you can open an issue or ma
 
 `flag unlock (flag name)`
 > Unlock a flag
+
+`flag clearLogs`
+> Clear all logs

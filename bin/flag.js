@@ -149,5 +149,17 @@ yargs.command({
             console.log((err.response || {data: { message: "An unknown error occured" }}).data.message)
         })
     }
+}).command({
+    command: "clearLogs",
+    describe: "Clear all logs",
+    builder: (yArgs) => { return yArgs },
+    handler: async(argv) => {
+        await axios.post(`${baseAPIURL}/api/clearLogs`, {            
+        }).then(response => {
+            console.log(response.data.message)
+        }).catch(err => {
+            console.log((err.response || {data: { message: "An unknown error occured" }}).data.message)
+        })
+    }
 })
 .demandCommand(1).help().argv
