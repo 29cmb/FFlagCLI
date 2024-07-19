@@ -1,9 +1,9 @@
 {
   "name": "cli",
   "version": "1.0.0",
-  "main": "bin/index.js",
+  "main": "bin/flag.js",
   "bin": {
-    "flag": "bin/index.js"
+    "flag": "bin/flag.js"
   },
   "author": "",
   "license": "ISC",
